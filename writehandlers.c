@@ -17,6 +17,7 @@ int handle_write_char(char c, char buffer[],
 	/* char is stored at left and paddind at buffer's right */
 	int i = 0;
 	char padd = ' ';
+
 	UNUSED(precision);
 	UNUSED(size);
 	if (flags & F_ZERO)
@@ -55,6 +56,7 @@ int write_number(int is_negative, int ind, char buffer[],
 {
 	int length = BUFF_SIZE - ind - 1;
 	char padd = ' ', extra_ch = 0;
+
 	UNUSED(size);
 	if ((flags & F_ZERO) && !(flags & F_MINUS))
 		padd = '0';
@@ -85,6 +87,7 @@ int write_num(int ind, char buffer[],
 		int length, char padd, char extra_c)
 {
 	int i, padd_start = 1;
+
 	if (prec == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0' && width == 0)
 		return (0); /* printf(".0d", 0)  no char is printed */
 	if (prec == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
@@ -142,6 +145,7 @@ int write_unsgnd(int is_negative, int ind,
 	/* The number is stored at the bufer's right and starts at position i */
 	int length = BUFF_SIZE - ind - 1, i = 0;
 	char padd = ' ';
+
 	UNUSED(is_negative);
 	UNUSED(size);
 	if (precision == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
@@ -188,6 +192,7 @@ int write_pointer(char buffer[], int ind, int length,
 		int width, int flags, char padd, char extra_c, int padd_start)
 {
 	int i;
+
 	if (width > length)
 	{
 		for (i = 3; i < width - length + 3; i++)
